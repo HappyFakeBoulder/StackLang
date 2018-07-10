@@ -1,0 +1,17 @@
+// The bug that ended my working on this was issues with the exec instruction. The next step is to convert this program into a suitable
+item to be pushed onto a stack and run with exec.;
+push 123;
+push 12;
+concat;
+push 2758;
+push 1;
+concat;
+concat;
+push 341;
+swap;
+push 12;
+swap;
+push 2425;
+swap;
+push 91;
+swap;
