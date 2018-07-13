@@ -9,22 +9,19 @@ class CodeError(Exception):
 	def __init__(self, *args, **kwargs):
 		Exception.__init__(self, *args, **kwargs)
 # some helpful little functions
-def compressBin(string):
-	while string[0] == "0":
-		string = string[1:]
-	return string
 def divideStr(string, sectLen):
 	return [string[start:start+sectLen] for start in range(0, len(string), sectLen)]
 def divideToChars(string):
 	return divideStr(string[len(string) % 8:], 8)
 def divToAscii(string):
+	string = ("0" * (8 - len(string) % 8)) + string # add leading 0s
 	retVal = ""
 	for x in string:
 		if x not in "01":
 			raise ValueError("Non-binary input to divToAscii")
 	print("Modulo of string is " + str(len(string) % 8))
 	for x in divideToChars(string):
-		retVal += chr(int(compressBin(x), 2))
+		retVal += chr(int(x, 2))
 	return retVal
 # the main interpreter class
 class StackLangInterpreter():
