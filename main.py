@@ -19,7 +19,6 @@ def divToAscii(string):
 	for x in string:
 		if x not in "01":
 			raise ValueError("Non-binary input to divToAscii")
-	print("Modulo of string is " + str(len(string) % 8))
 	for x in divideToChars(string):
 		retVal += chr(int(x, 2))
 	return retVal
@@ -30,7 +29,6 @@ class StackLangInterpreter():
 		self.dataStack = []
 	# interpretation function
 	def interpret(self, code):
-		print(code)
 		# checks for correct argument type
 		if type(code) != str:
 			raise TypeError("Expected str in interpret()")
@@ -54,9 +52,7 @@ class StackLangInterpreter():
 				for z in range(0, len(x[x.find(y):])):
 					if x[z + x.find(y)] not in "1234567890":
 						break
-				print(z)
 				self.genPurpVar = x[x.find(y):z + 6]
-				print(self.genPurpVar)
 				self.dataStack.append(bin(int(self.genPurpVar))[2:])
 			# pop instruction
 			if x.startswith("pop"):
@@ -87,8 +83,6 @@ class StackLangInterpreter():
 				self.dataStack.insert(len(self.dataStack) - 1, self.genPurpVar)
 			# exec instruction
 			if x.startswith("exec"):
-				print(self.dataStack)
-				print(divToAscii(self.dataStack[len(self.dataStack) - 1]))
 				self.interpret(divToAscii(self.dataStack[len(self.dataStack) - 1]))
 # programming interface
 interpreter = StackLangInterpreter()
