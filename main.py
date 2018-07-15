@@ -1,6 +1,6 @@
 # IMPORTANT NOTE:
 # This program reads code from code.stkl.
-# Before running, edit code.txt to hold the
+# Before running, edit code.stkl to hold the
 # program you want to run.
 
 import time
